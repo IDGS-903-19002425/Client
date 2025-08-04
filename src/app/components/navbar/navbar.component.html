@@ -1,0 +1,44 @@
+<div class="bg-blue-700">
+  <mat-toolbar class="bg-blue-300 text-black px-12 py-3">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a routerLink="/" class="ml-4 text-black text-lg font-semibold">My App</a>
+    <div class="flex-1"></div> 
+    @if (isLoggedIn()) {
+      <div *ngIf="authService.getUserDetail() as userDetail">
+        <div class="flex items-center gap-4">
+          <a [matMenuTriggerFor]="menu" class="flex items-center gap-3 cursor-pointer">            
+            <div
+              class="bg-red-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center text-sm"
+              [title]="userDetail.fullName"
+            >
+              {{ userDetail.fullName.charAt(0) }}
+            </div>
+
+            
+            <div class="text-black text-right leading-tight">
+              <div class="text-sm text-black font-semibold">{{ userDetail.fullName }}</div>
+              <div class="text-xs text-black opacity-80">{{ userDetail.roles }}</div>
+            </div>
+          </a>          
+          <mat-menu #menu="matMenu">
+            <button [routerLink]="['/account', 1]" mat-menu-item>
+              <mat-icon>account_circle</mat-icon>
+              <span>View Profile</span>
+            </button>
+            <button mat-menu-item >
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    } @else {
+      <div class="flex items-center gap-3">
+        <a mat-button routerLink="/login" class="text-white">Login</a>
+        <a mat-button routerLink="/register" class="text-white">Register</a>
+      </div>
+    }
+  </mat-toolbar>
+</div>
