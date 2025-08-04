@@ -6,8 +6,10 @@
         <div class="flex felx-col items-center gap-5 justify-center">
             @if(authService.getUserDetail()){
                 <h1 class="text-2x1">
-                    Iniciaste sesion como: 
-                    {{authService.getUserDetail()?.fullName}}
+                    Iniciaste sesion como: <span class=" font-bold bg-blue-600 rounded-md p-2 text-white">
+                        {{authService.getUserDetail()?.fullName}}
+                    </span>
+                    
                 </h1>
             }@else{
                 <h1 class="text-2x1">You are not logged in</h1>
