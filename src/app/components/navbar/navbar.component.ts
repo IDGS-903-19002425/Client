@@ -23,7 +23,7 @@ isLoggedIn(){
   return this.authService.isLoggedIn();
 }
 
-logout=()=>{
+logout= () =>{
   this.authService.logout();
   this.matSnackBar.open('Sesion cerrada', 'Close',{
     duration: 5000,
